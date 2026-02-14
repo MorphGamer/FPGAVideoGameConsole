@@ -23,5 +23,6 @@ This repository will contain SystemVerilog that will implement
 ## How to Play
 
 # Documentation  
+
 looking for documentation? Check out the [wiki!](https://github.com/MorphGamer/FPGAVideoGameConsole/wiki)
 
