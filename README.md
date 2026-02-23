@@ -42,6 +42,8 @@ As seen above, the user will be able to operate the joystick which will in turn 
 
 Mention Vivado and how to upload files to the FPGA board **(Work in Progress)**
 
+If a different FPGA board is used from the one that is linked above, make sure that the chip embedded within that board is an Artix. Otherwise, the code on this repository is not guaranteed to run on other FPGA boards.
+
 ### How to Play
 
 Connect the Pmod cable to the joystick. Connect the cable to the PMOD port on the FPGA board itself. The player can move up, down, left, and right within the maze. The goal is to try and run away from the enemy square and survive for as long as you can. When the player get caught, the player loses the match and the game restarts.
