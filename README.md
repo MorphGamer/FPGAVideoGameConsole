@@ -22,7 +22,7 @@ In order to replicate the project, you will need the following hardware:
 - Pmod JSTK2: Two-axis Joystick
     - https://digilent.com/shop/pmod-jstk2-two-axis-joystick/
 - VGA to HDMI Adapter (Can be any but that is what was used)
-    - https://www.amazon.com/dp/B07121Y1Z3
+    - https://retrorgb.com/converters.html
 - Pmod Cable Kit: 6-pin
     - https://digilent.com/shop/pmod-cable-kit-6-pin/
 - USB Flash Drive (to load .SV files onto the FPGA board).
