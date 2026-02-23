@@ -31,7 +31,12 @@ While not necessary, the joystick and FPGA board can be put into a 3D-Printed Ca
 
 ## Functionality
 
-Explain how the game works here. **(Work in Progress)**
+To come up with the design, a block diagram was created. The block describes both how the internal logic of the FPGA board will function as well as the entire system as a whole. In other words, how all the parts will connect and operate with one another. This can be seen below.
+
+![Block Diagram for Capstone Project](/FPGAVideoGameConsole/Images/Block%20Diagram-Detailed.drawio.svg "Block Diagram")
+
+As seen above, the user will be able to operate the joystick which will in turn move the square character on screen in eight different directions. This joystick will be connected to the PMOD port of the Basys 3 FPGA board. Internally, the game will be made up of different modules that will contain the game mechanics, visuals on screen, and the output image to the VGA port. This will require the 100MHz clock on the board. Through PLL (Phase Locked Loop), it will be able to boost the frequency up to 148.5MHz in order to output an image to the display at 1080p, 60Hz. If this is unable to be achieved, then the backup will be to lower the resolution down to 480p at 60Hz in order to accommodate for the clock that is one the board itself. That data will be dispersed through the 15 pins of the VGA port of the Basys 3. The VGA port will be connected to a VGA to HDMI Adapter. Lastly, the HDMI cable will be connected from the adapter to the monitor.
+
 
 ## Installation
 
