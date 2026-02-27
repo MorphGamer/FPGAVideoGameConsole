@@ -42,12 +42,16 @@ As seen above, the user will be able to operate the joystick which will in turn 
 
 If a different FPGA board is used from the one that is linked above, make sure that the chip embedded within that board is an Artix. Otherwise, the code on this repository is not guaranteed to run on other FPGA boards.
 
-Follow the link to create an account on AMD-Xilinx website. [AMD Account Creation](https://www.amd.com/en/registration/create-account.html) 
+Follow the link to create an account on AMD-Xilinx website. 
+
+[AMD Account Creation](https://www.amd.com/en/registration/create-account.html) 
 
 Once an account has been created, download the Latest Version of Vivado here:
 https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html
 
-The download link for the latest version is titled ["AMD Unified Installer for FPGAs & Adaptive SoCs 2025.2: Windows Self Extracting Web Installer".](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2025-2.html) 
+The download link for the latest version is titled: 
+
+["AMD Unified Installer for FPGAs & Adaptive SoCs 2025.2: Windows Self Extracting Web Installer".](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2025-2.html) 
 
 If a license is required to purchase, then go the sidebar and select "Vivado Archive" in order to download version [2023.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive.html)
 
