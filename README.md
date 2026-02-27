@@ -47,6 +47,7 @@ Follow the link to create an account on AMD-Xilinx website.
 [AMD Account Creation](https://www.amd.com/en/registration/create-account.html) 
 
 Once an account has been created, download the Latest Version of Vivado here:
+
 https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html
 
 The download link for the latest version is titled: 
