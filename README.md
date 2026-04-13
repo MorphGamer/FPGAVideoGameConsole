@@ -9,6 +9,7 @@ This repository will contain SystemVerilog code that will implement a square cha
 - [Requirements](#requirements)
 - [Functionality](#functionality)
 - [Installation](#installation)
+- [Team Members](#team-members)
 - [Documentation](#documentation)
 
 ## Introduction
@@ -82,6 +83,17 @@ Once all of the files are downloaded, click on:
 ### How to Play
 
 Connect the Pmod cable to the joystick. Connect the cable to the PMOD port on the FPGA board itself. The player can move up, down, left, and right within the maze. The goal is to try and run away from the enemy square and survive for as long as you can. When the player get caught, the player loses the match and the game restarts.
+
+## Team Members
+
+- Dominic Mendoza
+     - cdmendozamontesde@csuchico.edu  
+- Wyatt Jones
+     - wdjones@csuchico.edu
+     
+### Academic Advisor 
+- Dr. Reza Khani
+     - mkhani@csuchico.edu
 
 ## Documentation  
 
