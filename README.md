@@ -1,5 +1,7 @@
 # FPGAVideoGameConsole
 
+https://github.com/user-attachments/assets/7fc58ce1-9070-4d2e-8727-535c27845904
+
 ![Block Diagram for Capstone Project](assets/images/fpga_board_w_joystick.jpg "3D Printed FPGA Console with Joystick")
 
 This repository will contain SystemVerilog code that will implement a square chasing game on the "Basys 3 AMD Artix™ 7 FPGA Trainer Board". 
