@@ -2,10 +2,18 @@
 
 https://github.com/user-attachments/assets/7fc58ce1-9070-4d2e-8727-535c27845904
 
+<details open>
+<summary>Click to hide images</summary>
+
+<div>
+
 | ![Case with One Joystick](assets/images/fpga_board_w_joystick.jpg "3D Printed FPGA Console with One Joystick")  |  ![FPGA Case Ports](assets/images/fpga_case_ports.jpg "3D Printed FPGA Console Showing Ports") |
 |---|---|
 | ![FPGA Case with two Joysticks](assets/images/fpga_case_w_two_jstk.jpg "3D Printed FPGA Console with Two Joysticks")  | ![FPGA with Open Case](assets/images/fpga_opencase.jpg "3D Printed FPGA Console Open Lid")  |
 |  ![Joystick Casing Open](assets/images/joystick_open.jpg "Joystick Encasing Open") |  |
+
+</div>
+</details>
 
 This repository will contain SystemVerilog code that will implement a square chasing game on the "Basys 3 AMD Artix™ 7 FPGA Trainer Board". 
 
