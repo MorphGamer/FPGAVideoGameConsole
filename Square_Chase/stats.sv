@@ -21,7 +21,7 @@
 
 
 module stats#(
-    parameter EXPONENT = 4,
+    parameter EXPONENT = 5,
     parameter X_OFFSET = 600,
     parameter Y_OFFSET = 5,
     parameter BACKGROUND = 12'hFFF,
@@ -32,10 +32,10 @@ module stats#(
 )(
     input clk_100MHz, // 100 Mhz clock source on Basys 3 FPGA
     input reset, // reset
-    input [3:0] Anode_Activate, // anode signals of the 7-segment LED display
-    input [6:0] LED_out,// cathode patterns of the 7-segment LED display
     input [9:0] x, y,
-    output logic pixel_on
+    input stop,
+    output logic pixel_on,
+    output logic [3:0] score_10[EXPONENT]
     );
     
     
@@ -43,6 +43,8 @@ logic one_second_enable;
 logic display_number_carry[EXPONENT];
 logic [3:0] displayed_number_10[EXPONENT],
             next_displayed_number_10[EXPONENT];
+
+assign score_10 = displayed_number_10;
 
 
 //Count for 1 second
@@ -52,7 +54,7 @@ one_sec_timer(.clk_100MHz(clk_100MHz),.reset(reset),.one_second_enable(one_secon
 always @(posedge clk_100MHz or posedge reset)
 begin
     if(reset==1)    for (int i =0; i < EXPONENT; i++) displayed_number_10[i] <= 9;
-    else if (one_second_enable == 1) for (int i = 0; i< EXPONENT; i++) displayed_number_10[i] <= next_displayed_number_10[i];
+    else if ((one_second_enable == 1) && (!stop) ) for (int i = 0; i< EXPONENT; i++) displayed_number_10[i] <= next_displayed_number_10[i];
 end
     
 always_comb begin

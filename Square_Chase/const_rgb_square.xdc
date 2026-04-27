@@ -103,3 +103,28 @@ set_property PACKAGE_PIN T1 	 [get_ports {sw[14]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {sw[14]}]
 set_property PACKAGE_PIN R2 	 [get_ports {sw[15]}]					
 set_property IOSTANDARD LVCMOS33 [get_ports {sw[15]}]
+
+
+
+
+
+
+##Pmod Header JA
+#Sch name = JA7
+set_property PACKAGE_PIN H1 [get_ports {float}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {float}]
+	set_property PULLTYPE NONE [get_ports {float}]
+
+##Pmod Header JA
+##Sch name = JA1
+set_property PACKAGE_PIN J1 [get_ports {SS}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {SS}]
+#Sch name = JA2
+set_property PACKAGE_PIN L2 [get_ports {MOSI}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {MOSI}]
+#Sch name = JA3
+set_property PACKAGE_PIN J2 [get_ports {MISO}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {MISO}]
+#Sch name = JA4
+set_property PACKAGE_PIN G2 [get_ports {SCLK}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {SCLK}]

@@ -5,15 +5,14 @@ module pixel_generation #(
     parameter Y_MAX = 480,                  // bottom border of display area
     parameter HEIGHT = 32,                   // height of line sides in pixels
     parameter WIDTH = 32,                   // width of line sides in pixels
-    parameter NUM_WALLS = 5                 
+    parameter NUM_WALLS = 10
+
 )(
     input clk,                              // 100MHz from Basys 3
     input reset,                            // btnC
     input video_on,                         // from VGA controller
     input [9:0] x, y,                       // from VGA controller
     input [3:0] move,                       // movement keys
-    output [3:0] Anode_Activate,         // anode signals of the 7-segment LED display
-    output reg [6:0] LED_out,               // cathode patterns of the 7-segment LED display
     input [15:0] switch,
     output reg [11:0] rgb                   // to DAC, to VGA controller
     );
@@ -40,62 +39,23 @@ module pixel_generation #(
     logic [9:0] wall_x_r [NUM_WALLS];
     logic [9:0] wall_y_t [NUM_WALLS];
     logic [9:0] wall_y_b [NUM_WALLS];
-    //walls(.clk(clk),.reset(reset),.seed(switch),.wall_x_l(wall_x_l),.wall_x_r(wall_x_r),.wall_y_t(wall_y_t),.wall_y_b(wall_y_b));
-//    initial begin 
-//    for (int i = 1; i <NUM_WALLS; i++) begin
-//        wall_x_l[i] = randomize();
-//        wall_x_r[i] = wall_x_l[i] + randomize();
-//        wall_y_t[i] = randomize();
-//        wall_y_b[i] = wall_y_t[i] + randomize();
-//    end
-//    end
+    walls(.clk(clk),.reset(reset),.seed(switch),.wall_x_l(wall_x_l),.wall_x_r(wall_x_r),.wall_y_t(wall_y_t),.wall_y_b(wall_y_b));
 
-//    //wall 0
-    assign wall_x_l[0] = 200;
-    assign wall_x_r[0] = 250;
-    assign wall_y_t[0] = 200;
-    assign wall_y_b[0] = 400;
-    
-    assign wall_x_l[1] = 100;
-    assign wall_x_r[1] = 125;
-    assign wall_y_t[1] = 75;
-    assign wall_y_b[1] = 250;
-    
-    assign wall_x_l[2] = 400;
-    assign wall_x_r[2] = 500;
-    assign wall_y_t[2] = 100;
-    assign wall_y_b[2] = 135;
-        
-    assign wall_x_l[3] = 600;
-    assign wall_x_r[3] = 650;
-    assign wall_y_t[3] = 400;
-    assign wall_y_b[3] = 440;
-        
-    assign wall_x_l[4] = 500;
-    assign wall_x_r[4] = 510;
-    assign wall_y_t[4] = 125;
-    assign wall_y_b[4] = 480;
     
     logic x_overlap = (sq_x_l < enemy_l + WIDTH-1) && (sq_x_l + WIDTH-1 > enemy_l);
     logic y_overlap = (sq_y_t < enemy_t + HEIGHT-1) && (sq_y_t + HEIGHT-1 > enemy_t);
     
     logic game_over;
     assign game_over = (x_overlap && y_overlap);
-    logic game_over_on;
-    logic sign_x_l = 200;
-    logic sign_x_r = X_MAX - 200;
-    logic sign_y_t = 150;
-    logic sign_y_b = Y_MAX - 150;
-    assign game_over_on = (sign_x_l <= x) && (x <= sign_x_r) &&
-                   (sign_y_t <= y) && (y <= sign_y_b);;
+
     
-    enemy enemy0(.clk(clk),.reset(reset),.refresh_tick(refresh_tick),.switch(switch),.player_x(sq_x_l),.player_y(sq_y_t),
+    enemy enemy0(.clk(clk),.reset(reset),.refresh_tick(refresh_tick),.switch(switch[5:0]),.player_x(sq_x_l),.player_y(sq_y_t),
     .wall_x_l(wall_x_l),.wall_x_r(wall_x_r),.wall_y_t(wall_y_t),.wall_y_b(wall_y_b),.enemy_x(enemy_l),.enemy_y(enemy_t));
     // register control
     always @(posedge clk or posedge reset)
         if(reset) begin
-            sq_x_reg <= 10;
-            sq_y_reg <= 10;
+            sq_x_reg <= 25;
+            sq_y_reg <= 25;
         end
         else begin
             if (!game_over) begin
@@ -196,21 +156,48 @@ end
     wire boarder_on;
     assign boarder_on = ((x <= 10) || ((X_MAX - 10 <= x) && (x <= X_MAX) )) || ((y <= 20) || ((Y_MAX - 10 <= y) && (y <= Y_MAX) ));
             
-            
-    Seven_segment_LED_Display_Controller(.clk_100MHz(clk),.reset(reset),.Anode_Activate(Anode_Activate),.LED_out(LED_out));
-
     wire stats_on;
-    stats(.clk_100MHz(clk),.reset(reset), .Anode_Activate(Anode_Activate),.LED_out(LED_out),.x(x), .y(y),.pixel_on(stats_on));
+    logic [3:0] score_10[5]; 
+    stats(.clk_100MHz(clk),.reset(reset),.stop(game_over),.x(x), .y(y),.pixel_on(stats_on),.score_10(score_10));
     
     // RGB control
+
+
+
+logic in_box;
+logic text_on;
+
+// Box detection
+    logic [9:0] sign_x_l = 150;
+    logic [9:0] sign_x_r = X_MAX - 150;
+    logic [9:0] sign_y_t = 200;
+    logic [9:0] sign_y_b = Y_MAX - 200;
+    assign in_box = (sign_x_l <= x) && (x <= sign_x_r) && (sign_y_t <= y) && (y <= sign_y_b);
+
+
+// Text module
+GameOverText text_inst (
+    .pixel_x(x),
+    .pixel_y(y),
+    .text_on(text_on),
+    .score_10(score_10)
+);
+
+// color logic
     always @*
         if(~video_on)
             rgb = 12'h000;          // black(no value) outside display area
         else
             if (stats_on)
                 rgb = 12'h00F;
-            else if (game_over_on)
-                rgb = 12'h000;
+            else if (game_over && in_box) begin
+                    if (text_on)
+                        rgb = 12'h00F; // Red
+                    else
+                        rgb = 12'h000; // black
+                end
+//            if (game_over_on)
+//                rgb = 12'h000;
             else if (boarder_on)
                 rgb = 12'h888;
             else if(sq_on)
