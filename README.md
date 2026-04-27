@@ -112,3 +112,24 @@ Connect the Pmod cable to the joystick. Connect the cable to the PMOD port on th
 
 looking for documentation? Check out the [wiki!](https://github.com/MorphGamer/FPGAVideoGameConsole/wiki)
 
+---
+
+[↑ Back to Top](#fpgavideogameconsole)
+
+---
+
+### References
+
+[1] W. Green. “Video Timings: VGA, 720p, 1080p.” Project F. https://projectf.io/posts/video-timings-vga-720p-1080p/#640x480-60-hz.
+
+[2] IEEE. “IEEE Standard for SystemVerilog.” IEEE SA. https://standards.ieee.org/ieee/1800/6700/.
+
+[3] IEEE. “IEEE Standard for Test Access Port and Boundary-Scan Architecture.” IEEE SA. https://standards.ieee.org/ieee/1149.1/4484/.
+
+[4] P. Dhaker. “Introduction to SPI Interface.” ADI Analog Dialogue. https://www.analog.com/en/resources/analog-dialogue/articles/introduction-to-spi-interface.html.
+
+[5] "[FPGA Tutorial] Seven-Segment LED Display on Basys 3 FPGA." FPGA/Verilog Projects. https://www.fpga4student.com/2017/09/seven-segment-led-display-controller-basys3-fpga.html.
+
+[6] FPGADude. "Digital-Design." Github. https://github.com/FPGADude/Digital-Design.
+
+[7] Commanderfranz. "How to Use a Joystick With an FPGA." Autodesk Instructables. https://www.instructables.com/How-to-Use-the-PmodJSTK-With-the-Basys3-FPGA/.
