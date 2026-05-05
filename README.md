@@ -1,6 +1,6 @@
 # FPGAVideoGameConsole
 
-https://github.com/user-attachments/assets/7fc58ce1-9070-4d2e-8727-535c27845904
+https://github.com/user-attachments/assets/03b951da-1baa-476f-aadb-262525537968
 
 <details open>
 <summary>Click to hide images</summary>
